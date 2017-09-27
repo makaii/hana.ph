@@ -12,13 +12,13 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-info">
+                <div class="panel panel-info no-border">
                     <div class="panel-heading">
                         Unverified Companies
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table hover">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>

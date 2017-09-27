@@ -57,6 +57,16 @@ class Test extends CI_Controller {
 
     }
 
+
+    public function lol()
+    {
+        $this->load->model('model_Admin');
+        $row = $this->model_Admin->get_newest_users();
+        echo "<pre>";
+        echo print_r($row);
+        echo "</pre>";
+    }
+
         
 
 }

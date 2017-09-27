@@ -31,10 +31,12 @@ class model_Admin extends CI_Model {
 	}
 
 
-	function get_latest_users()
+	function get_newest_users()
 	{
-		$this->db->where();
-		$this->db->get('accounts_tbl');
+		$this->db->limit(10);
+		$this->db->order_by('user_id', 'DESC');
+		$query = $this->db->get('accounts_tbl');
+		return $query->result_array();
 	}
 
 
