@@ -1,0 +1,29 @@
+.disabled {
+  /* Make the disabled links grayish*/
+  color: #BDC3C7;
+  /* And disable the pointer events */
+  pointer-events: none;
+}
+
+.navbar{
+	border-radius: 0px;
+}
+
+.white{
+	color: #ECF0F1;;
+}
+
+
+.footer{
+	margin-top: 70px;
+	padding-bottom: 0px;
+}
+
+small.text-danger, p{
+	font-size: 15px;
+}
+
+hr{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
