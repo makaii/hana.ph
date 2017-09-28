@@ -16,7 +16,7 @@ class Admin extends CI_Controller {
 				'total_num_applicanats'	=>	$this->model_Admin->get_total_applicants(),
 				'total_num_companies'	=>	$this->model_Admin->get_total_companies(),
 				'total_num_jobs'		=>	$this->model_Admin->get_total_jobs(),
-				'newest_users'			=> 	$this->model_Admin->get_newest_users(),
+				'newest_users'			=> 	$this->model_Admin->get_newest_users(),				
 			);
 
 			$nav_data = array
@@ -25,6 +25,8 @@ class Admin extends CI_Controller {
 				'active_applicant'	=>	'',
 				'active_company'	=>	'',
 				'active_job'		=>	'',
+				'tn_companies'		=>	$this->model_Admin->get_total_unverified_companies(),
+				'tn_jobs'			=>	$this->model_Admin->get_total_unapproved_jobs(),
 			);
 
 			$this->load->view('admin/template/header', $page_data);
@@ -45,17 +47,21 @@ class Admin extends CI_Controller {
 	{
 		if ($this->session->userdata('logged_in') && ($this->session->userdata('user_type') == 'admin'))
 		{
+			$this->load->model('model_Admin');
+
 			$page_data = array
 			(
-				'page_title' => 'Applicants',
+				'page_title'		=>	'Applicants',
 			);
 
 			$nav_data = array
 			(
-				'active_dashboard' =>'',
-				'active_applicant' =>'active-menu',				
-				'active_company' =>'',
-				'active_job' =>'',
+				'active_dashboard'	=>	'',
+				'active_applicant'	=>	'active-menu',				
+				'active_company'	=>	'',
+				'active_job'		=>	'',
+				'tn_companies'		=>	$this->model_Admin->get_total_unverified_companies(),
+				'tn_jobs'			=>	$this->model_Admin->get_total_unapproved_jobs(),
 
 			);
 
@@ -79,17 +85,22 @@ class Admin extends CI_Controller {
 	{
 		if ($this->session->userdata('logged_in') && ($this->session->userdata('user_type') == 'admin'))
 		{
+			$this->load->model('model_Admin');			
+
 			$page_data = array
 			(
-				'page_title' => 'Companies',
+				'page_title'		=>	'Companies',
+				'unverifed_company'	=>	$query = $this->model_Admin->get_unverified_companies(),
 			);
 
 			$nav_data = array
 			(
-				'active_dashboard' =>'',
-				'active_applicant' =>'',				
-				'active_company' =>'active-menu',
-				'active_job' =>'',
+				'active_dashboard'	=>	'',
+				'active_applicant'	=>	'',				
+				'active_company'	=>	'active-menu',
+				'active_job'		=>	'',
+				'tn_companies'		=>	$this->model_Admin->get_total_unverified_companies(),
+				'tn_jobs'			=>	$this->model_Admin->get_total_unapproved_jobs(),
 			);
 
 			$this->load->view('admin/template/header', $page_data);
@@ -110,17 +121,22 @@ class Admin extends CI_Controller {
 	{
 		if ($this->session->userdata('logged_in') && ($this->session->userdata('user_type') == 'admin'))
 		{
+			$this->load->model('model_Admin');
+
 			$page_data = array
 			(
-				'page_title' => 'Jobs',
+				'page_title'		=>	'Jobs',
+				'unapproved_job'	=>	$this->model_Admin->get_unapproved_jobs(),
 			);
 
 			$nav_data = array
 			(
-				'active_dashboard' =>'',
-				'active_applicant' =>'',				
-				'active_company' =>'',
-				'active_job' =>'active-menu',
+				'active_dashboard'	=>	'',
+				'active_applicant'	=>	'',				
+				'active_company'	=>	'',
+				'active_job'		=>	'active-menu',
+				'tn_companies'		=>	$this->model_Admin->get_total_unverified_companies(),
+				'tn_jobs'			=>	$this->model_Admin->get_total_unapproved_jobs(),
 			);
 
 			$this->load->view('admin/template/header', $page_data);
@@ -167,6 +183,22 @@ class Admin extends CI_Controller {
 		{
 			redirect(base_url('login'));
 		}
+	}
+
+
+
+	public function approve_job($job_id)
+	{
+		$this->load->model('model_Admin');
+		$this->model_Admin->approve_job($job_id);
+	}
+
+
+
+	public function verify_company($company_id)
+	{
+		$this->load->model('model_Admin');
+		$this->model_Admin->verify_company($company_id);
 	}
 
 	

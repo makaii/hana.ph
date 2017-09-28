@@ -5,30 +5,24 @@ class Search extends CI_Controller {
 
 	public function index()
 	{
-		$search_string = $this->input->get('searchInput');
-		$this->load->model('model_Search');
-		$search_result = $this->model_Search->search($search_string);
-		if ($search_result == false) {
-			echo "no result";
-		}
-		elseif (isset($search_result)) {
-			foreach ($search_result as $row) {
-				echo $row['job_title'];
-				echo $row['job_description'];
-				echo $row['job_company'];
-				echo $row['job_location'];
-				echo $row['job_salary'];
-			}
-		}
+		
 	}
-
-
 
 
 
 	public function result()
 	{
+		$this->load->model('model_Search');
+		$search_result = $this->model_Search->search($this->input->get('searchInput'));
 
+		$page_data = array
+		(
+			'search_result'		=> $search_result
+		);
+
+		$this->load->view('templates/header.php', $page_data);
+		$this->load->view('search/index');
+		$this->load->view('templates/footer.php')
 	}
 
 	

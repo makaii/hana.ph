@@ -24,21 +24,18 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Verified</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>#</td>
-                                        <td>#</td>
-                                        <td>#</td>
-                                        <td>#</td>
-                                        <td>
-                                            <button class="btn btn-sm btn-info">See</button>
-                                            <button class="btn btn-sm btn-info">See</button>
-                                        </td>
-                                    </tr>                                    
+                                    <?php foreach ($unverifed_company as $row) {
+                                        echo "<tr>";
+                                        echo "<td>".$row['company_id']."</td>";
+                                        echo "<td></td>";
+                                        echo "<td>".$row['company_email']."</td>";
+                                        echo "<td>"."<button class='btn btn-sm btn-info'>See</button>"."</td>";
+                                        echo "</tr>";
+                                    } ?>                                  
                                 </tbody>
                             </table>
                         </div>
