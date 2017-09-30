@@ -44,7 +44,7 @@
                             <div class="col-lg-1"></div>
                               <div class="col-xs-12 col-lg-10">
                               Job Description 
-                                  <textarea class="form-control" rows="4" name="jobdescription" placeholder="Job Description"><?php echo $jobs_tbl['job_description'];?></textarea>
+                                  <textarea class="form-control disabled" rows="4" name="jobdescription" placeholder="Job Description"><?php echo $jobs_tbl['job_description'];?></textarea>
                            
                                   </div>
                                    <div class="col-lg-1"><p class="help-block"><small class="text-danger"></small></p></div>
@@ -54,12 +54,11 @@
                   <div class="row">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-10">
-                      <div class="col-lg-4"></div>
-                      <div class="col-lg-4">
-                         <button type="submit" class="btn btn-success btn-block">Post</button>
-
-                      </div>
-                      <div class="col-lg-4"></div>
+                      
+                         
+                          <a  class="btn btn-info btn-block" href="<?php echo base_url('company/job_posts');?>">Back</a>
+                      
+                     
                     </div>
                     <div class="col-lg-1"></div>
                   </div>

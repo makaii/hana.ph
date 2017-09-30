@@ -201,16 +201,24 @@ class Company extends CI_Controller {
         $this->load->view('company/view-job-post',$data); 
         $this->load->view('company/company-footer');
     }
-    public function edit_job(){
+    public function edit_job($slug){
         $page_data = array(
                 'page_title' => 'Edit Job Post',
                 'profile_status' => true,
                 'email_address' => $this->session->userdata('email_address'));
 
-         $this->session->set_userdata($page_data);
+        $this->load->model('model_Company');
+        $data['jobs_tbl'] = $this->model_Company->get_posts($slug);
+                if(empty($data['jobs_tbl'])){
+                    show_404();
+                }
+
+        $data ['job_title'] = 'Edit Post';
+        
+        $this->session->set_userdata($page_data);
         $this->load->view('company/company-header',$page_data);
         $this->load->view('company/register-style.php');
-        $this->load->view('company/edit-job-post');
+        $this->load->view('company/edit-job-post',$data);
         $this->load->view('company/company-footer');
     }
     

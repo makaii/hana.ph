@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 				$query = $this->db->get_where('jobs_tbl',array('job_slug' => $slug));
 				return $query->row_array();
-			
+				
 		}
 
 

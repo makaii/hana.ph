@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h4 class="white" style="text-align: center;">Edit Job Post</h4> 
+      <h4 class="white" style="text-align: center;">Edit <?php echo $jobs_tbl['job_title'];?> Post</h4> 
+      <?php form_open('company/update_job');?>
     </div>
 
     <div class="row">
@@ -15,7 +16,7 @@
             <div class="col-lg-1"></div>
             <div class="col-xs-12 col-lg-10">
               <p class="help-block">Input Job Title</p>
-                <input type="text" class="form-control" name="title" placeholder="Job Title" value="<?php ; ?>"/>
+                <input type="text" class="form-control" name="title" placeholder="Job Title" value="<?php echo $jobs_tbl['job_title']; ?>">
                
             </div>
             <div class="col-lg-1"><p class="help-block"><small class="text-danger"></small></p></div>
@@ -25,7 +26,7 @@
               <div class="col-lg-1"></div>
                 <div class="col-xs-12 col-lg-10">
                 <p class="help-block">Input the possible branch </p>
-                      <select class="form-control" name="location" value="<?php  ?>">
+                      <select class="form-control" name="location" value="<?php echo $jobs_tbl['job_location']; ?>">
                         <option selected disabled>Location</option>
                                 <option value="Cavite">Cavite</option>
                   <option value="Marikina">Marikina</option>
@@ -42,7 +43,7 @@
                           <div class="col-lg-1"></div>
                             <div class="col-xs-12 col-lg-10">
                             <p class="help-block">Input Job Type</p>
-                                 <select class="form-control" name="jobtype" value="<?php ?>">
+                                 <select class="form-control" name="jobtype" value="<?php echo $jobs_tbl['job_type'];?>">
                                   <option selected disabled>Job Type</option>
                                   <option value="Full-Time">Full Time</option>
                                   <option value="Part-Time">Part Time</option>
@@ -53,7 +54,7 @@
                                   <option value="Commission">Commission</option>
                                  </select>
                             </div>
-                            <div class="col-lg-1"><p class="help-block"><small class="text-danger"><?php ; ?></small></p></div>
+                            <div class="col-lg-1"><p class="help-block"><small class="text-danger"><?php ;?></small></p></div>
                          </div>
 
                       <div class="row">
@@ -80,7 +81,7 @@
                   <div class="col-lg-1"></div>
                   <div class="col-xs-12 col-lg-10">
                       <p class="help-block">Applications for this job will be sent to the following email address:</p> 
-                      <input type="email" class="form-control" name="email" placeholder="Email" value="<?php ; ?>">
+                      <input type="email" class="form-control" name="email" placeholder="Email" value="<?php echo $email_address; ?>">
                       <p class="help-block"><small class="text-danger"></small>
                   </div>
                    <div class="col-lg-1"><p class="help-block"><small class="text-danger"></small></p></div>
@@ -91,7 +92,7 @@
                             <div class="col-lg-1"></div>
                               <div class="col-xs-12 col-lg-10">
                               <p class="help-block">Describe the responsibilities of this Job, Required skills and work experience or education.</p> 
-                                  <textarea class="form-control" rows="4" name="jobdescription" placeholder="Job Description" value="<?php ; ?>"></textarea>
+                                  <textarea class="form-control" rows="4" name="jobdescription" placeholder="Job Description"><?php echo $jobs_tbl['job_description']; ?></textarea>
                            
                                   </div>
                                    <div class="col-lg-1"><p class="help-block"><small class="text-danger"></small></p></div>

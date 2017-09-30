@@ -20,9 +20,9 @@
         </div>
       </div>
       <div class="col-md-9">
-     <?php foreach ($posts as $job_tbl):?>
-         <div class="well"><a href="<?php echo site_url('company/view_job/'.$job_tbl['job_slug']);?>"> <?php echo $job_tbl['job_title']?></a>
-            <a href="<?php echo base_url();?>company/edit_job" class="btn btn-info btn-sm navbar-right">Edit Post</a>
+     <?php foreach ($posts as $jobs_tbl):?>
+         <div class="well"><a href="<?php echo site_url('company/view_job/'.$jobs_tbl['job_slug']);?>"> <?php echo $jobs_tbl['job_title']?></a>
+            <a href="<?php echo base_url('company/edit_job/'.$jobs_tbl['job_slug']);?>" class="btn btn-info btn-sm navbar-right"><?php echo $jobs_tbl['job_slug']?> Edit Post</a>
            
               <hr>
             <table>
