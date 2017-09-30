@@ -11,11 +11,11 @@
 
          <div class="row">
             <div class="col-md-3">
-                <div class="panel panel-primary text-center no-boder bg-color-blue">
+                <div class="panel panel-primary text-center no-border bg-color-blue">
                     <div class="panel-body">
-                        <i class="fa fa-5x fa-users"></i>
+                        <i class="fa fa-5x fa-users" aria-hidden="true"></i>
                         <h3>
-                            <?php echo $this->session->userdata('total_num_accounts'); ?>
+                            <?php echo $total_num_accounts; ?>
                         </h3>
                     </div>
                     <div class="panel-footer">
@@ -24,11 +24,11 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="panel panel-primary text-center no-boder bg-color-blue">
+                <div class="panel panel-primary text-center no-border bg-color-blue">
                     <div class="panel-body">
-                        <i class="fa fa-5x fa-briefcase"></i>
+                        <i class="fa fa-5x fa-briefcase" aria-hidden="true"></i>
                         <h3>
-                            <?php echo $this->session->userdata('total_num_applicanats'); ?>
+                            <?php echo $total_num_applicanats; ?>
                         </h3>
                     </div>
                     <div class="panel-footer">
@@ -37,11 +37,11 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="panel panel-primary text-center no-boder bg-color-blue">
+                <div class="panel panel-primary text-center no-border bg-color-blue">
                     <div class="panel-body">
-                        <i class="fa fa-5x fa-building-o"></i>
+                        <i class="fa fa-5x fa-building-o" aria-hidden="true"></i>
                         <h3>
-                            <?php echo $this->session->userdata('total_num_companies'); ?>
+                            <?php echo $total_num_companies; ?>
                         </h3>
                     </div>
                     <div class="panel-footer">
@@ -50,11 +50,11 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="panel panel-primary text-center no-boder bg-color-blue">
+                <div class="panel panel-primary text-center no-border bg-color-blue">
                     <div class="panel-body">
-                        <i class="fa fa-5x fa-tasks"></i>
+                        <i class="fa fa-5x fa-tasks" aria-hidden="true"></i>
                         <h3>
-                            <?php echo $this->session->userdata('total_num_jobs'); ?>
+                            <?php echo $total_num_jobs; ?>
                         </h3>
                     </div>
                     <div class="panel-footer">
@@ -63,6 +63,49 @@
                 </div>
             </div>
         </div>
+        <!-- /. ROW  -->
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-4">
+                <div class="panel panel-primary no-border">
+                    <div class="panel-heading">
+                        Newest Registered  Users
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <i class="fa fa-lg fa-sort-amount-asc" aria-hidden="true"></i>
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-lg fa-envelope" aria-hidden="true"></i> Email
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-lg fa-user" aria-hidden="true"></i> Type
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-lg fa-calendar" aria-hidden="true"></i> Date Joined
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>                                    
+                                    <?php foreach ($newest_users as $row) {
+                                        echo "<tr>";
+                                        echo "<td>".$row['user_id']."</td>";
+                                        echo "<td>".$row['user_email']."</td>";
+                                        echo "<td>".$row['user_type']."</td>";
+                                        echo "<td>".$row['user_date_joined']."</td>";
+                                        echo "</tr> ";
+                                    } ?>                                                                       
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
         <!-- /. ROW  -->
 
         <!-- <div class="row">

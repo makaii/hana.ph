@@ -9,10 +9,10 @@
                 <a class="<?php echo $active_applicant; ?>" href="<?php echo base_url('admin/applicant'); ?>"><i class="fa fa-briefcase"></i> Applicant</a>
             </li>
             <li>
-                <a class="<?php echo $active_company; ?>" href="<?php echo base_url('admin/company'); ?>"><i class="fa fa-building-o"></i> Company</a>
+                <a class="<?php echo $active_company; ?>" href="<?php echo base_url('admin/company'); ?>"><i class="fa fa-building-o"></i> Company <span class="badge"><?php echo $tn_companies." companies pending"; ?></span></a>
             </li>
             <li>
-                <a class="<?php echo $active_job; ?>" href="<?php echo base_url('admin/job'); ?>"><i class="fa fa-tasks"></i> Jobs</a>
+                <a class="<?php echo $active_job; ?>" href="<?php echo base_url('admin/job'); ?>"><i class="fa fa-tasks"></i> Jobs <span class="badge"><?php echo $tn_jobs." new jobs"; ?></span></a>
             </li>
             <li>
                 <a><i class="fa fa-fw fa-file"></i> Reports<span class="fa arrow"></span></a>

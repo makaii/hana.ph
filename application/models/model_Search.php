@@ -22,9 +22,6 @@ class model_Search extends CI_Model
 		 	
 		 	if ($query->num_rows() >= 1) {
 		 		$result = $query->result_array();
-		 		// echo "<pre>";
-		 		// echo print_r($result);
-		 		// echo "</pre>";
 		 		return $result;
 		 	}
 		 	else

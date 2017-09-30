@@ -12,33 +12,30 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-info">
+                <div class="panel panel-info no-border">
                     <div class="panel-heading">
                         Unverified Companies
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table hover">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Verified</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>#</td>
-                                        <td>#</td>
-                                        <td>#</td>
-                                        <td>#</td>
-                                        <td>
-                                            <button class="btn btn-sm btn-info">See</button>
-                                            <button class="btn btn-sm btn-info">See</button>
-                                        </td>
-                                    </tr>                                    
+                                    <?php foreach ($unverifed_company as $row) {
+                                        echo "<tr>";
+                                        echo "<td>".$row['company_id']."</td>";
+                                        echo "<td></td>";
+                                        echo "<td>".$row['company_email']."</td>";
+                                        echo "<td>"."<button class='btn btn-sm btn-info'>See</button>"."</td>";
+                                        echo "</tr>";
+                                    } ?>                                  
                                 </tbody>
                             </table>
                         </div>

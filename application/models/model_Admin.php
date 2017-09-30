@@ -23,6 +23,12 @@ class model_Admin extends CI_Model {
 		$query = $this->db->get('company_tbl');
 		return $query->num_rows();
 	}
+	function get_total_unverified_companies()
+	{
+		$this->db->where('company_verified', 0);
+		$query = $this->db->count_all_results('company_tbl');
+		return $query;
+	}
 
 	function get_total_jobs()
 	{
@@ -30,11 +36,19 @@ class model_Admin extends CI_Model {
 		return $query->num_rows();
 	}
 
-
-	function get_latest_users()
+	function get_total_unapproved_jobs()
 	{
-		$this->db->where();
-		$this->db->get('accounts_tbl');
+		$query = $this->db->count_all_results('jobs_tbl');
+		return $query;
+	}
+
+
+	function get_newest_users()
+	{
+		$this->db->limit(10);
+		$this->db->order_by('user_id', 'DESC');
+		$query = $this->db->get('accounts_tbl');
+		return $query->result_array();
 	}
 
 
@@ -47,14 +61,16 @@ class model_Admin extends CI_Model {
 
 	function get_unapproved_jobs()
 	{
-		$this->db->get('jobs_tbl');
+		$query = $this->db->get('jobs_tbl');
+		return $query->result_array();
 	}
 
 
-	function get_unapproved_companies()
+	function get_unverified_companies()
 	{
-		$this->db->where('company_verfied', 0);
-		$this->db->get('company_tbl');
+		$this->db->where('company_verified', 0);
+		$query = $this->db->get('company_tbl');
+		return $query->result_array();
 	}
 
 }
