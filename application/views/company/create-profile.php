@@ -4,7 +4,7 @@
       <div class="jumbotron">
         <h4>Oops you dont seem to have a Profile, let us help you with that</h4>
         <h4></h4>
-        <a class="btn btn-hg btn-primary" href="<?php echo base_url('company/create_profile_1'); ?>">Click here</a>
+        <a class="btn btn-hg btn-primary" href="<?php echo base_url('profile/create_profile'); ?>">Click here</a>
       </div>
     </div>
   </div>

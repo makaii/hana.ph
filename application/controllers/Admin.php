@@ -195,10 +195,12 @@ class Admin extends CI_Controller {
 
 
 
-	public function verify_company($company_id)
+	public function verify_company($company_email)
 	{
 		$this->load->model('model_Admin');
-		$this->model_Admin->verify_company($company_id);
+		$this->model_Admin->verify_company_profile($company_email);
+		$this->model_Admin->verify_company($company_email);
+		redirect(base_url('admin/company'));
 	}
 
 	

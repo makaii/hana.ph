@@ -30,7 +30,7 @@
     <![endif]-->
   </head>
   
- <body style="background-color: #2980b9;">
+ <body style="background-color: #3498DB;">
 
   <nav class="navbar navbar-default navbar-lg" role="navigation">
     
@@ -49,12 +49,12 @@
       <div class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="#"><?php echo $email_address; ?></a>
+          <a href="<?php echo base_url('profile/'); ?>"><?php echo $email_address; ?></a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <i class="fui-gear"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="<?php echo base_url('company/create_profile'); ?>">Profile</a></li>
+            <li><a href="<?php echo base_url('profile/'); ?>">Profile</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>

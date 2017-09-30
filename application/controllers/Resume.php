@@ -13,22 +13,22 @@ class Resume extends CI_Controller {
 
             $resume_data = array(
                 // resume personal info
-                'resume_name' => $row->resume_first_name." ".$row->resume_last_name,
-                'resume_address' => $row->resume_address,
-                'resume_email' => $row->resume_email,
-                'resume_mobile_number' => $row->resume_mobile_number,
+                'resume_name'   => $row->resume_first_name." ".$row->resume_last_name,
+                'resume_address'    => $row->resume_address,
+                'resume_email'  => $row->resume_email,
+                'resume_mobile_number'  => $row->resume_mobile_number,
                 // resume work
-                'resume_work_position' =>  $row->resume_work_position,
-                'resume_company' => $row->resume_company,
-                'resume_company_address' => $row->resume_company_address,
-                'resume_work_year_started' => $row->resume_work_year_started,
-                'resume_work_year_ended' => $row->resume_work_year_ended,
+                'resume_work_position'  =>  $row->resume_work_position,
+                'resume_company'        => $row->resume_company,
+                'resume_company_address'    => $row->resume_company_address,
+                'resume_work_year_started'  => $row->resume_work_year_started,
+                'resume_work_year_ended'    => $row->resume_work_year_ended,
                 // resume school
                 'resume_school' => $row->resume_school,
                 'resume_degree' => $row->resume_degree,
-                'resume_school_address' => $row->resume_school_address,
-                'resume_school_year_started' => $row->resume_school_year_started,
-                'resume_school_year_ended' => $row->resume_school_year_ended,
+                'resume_school_address'     => $row->resume_school_address,
+                'resume_school_year_started'    => $row->resume_school_year_started,
+                'resume_school_year_ended'  => $row->resume_school_year_ended,
                 // etc
                 'resume_img_url' => $row->resume_img_url,
                 'resume_cv_url' => $row->resume_cv_url,
@@ -36,7 +36,7 @@ class Resume extends CI_Controller {
             );
 
             $page_data = array(
-                'page_title' => 'Resume',
+                'page_title'    => 'Resume',
                 'email_address' => $this->session->userdata('email_address'),
             );
 
@@ -50,7 +50,7 @@ class Resume extends CI_Controller {
         elseif (!$this->session->userdata('profile_status')) 
         {
             $page_data = array(
-                'page_title' => 'Resume',
+                'page_title'    => 'Resume',
                 'email_address' => $this->session->userdata('email_address') );
             $this->session->set_userdata($page_data);
 
