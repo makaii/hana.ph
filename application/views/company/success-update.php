@@ -6,7 +6,7 @@
       
        <p>
          <span>
-           You can now view your (insert your job here) on the Job Posts<br>
+           You can now view your  on the Job Posts<br>
            of your company
          </span>
         

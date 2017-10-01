@@ -13,7 +13,7 @@
             Actions
             <hr>
             
-            <a href="<?php echo base_url();?>company/post_a_job" class="btn btn-primary btn-block">Post a Job</a>
+            <a href="<?php echo base_url('company/create_job');?>" class="btn btn-primary btn-block">Post a Job</a>
 
             </p>
           </div>

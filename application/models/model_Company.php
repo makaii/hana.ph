@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		public function get_company_profile_data($company_email)
 		{
+
 			if (!empty($company_email))
 			{
 				$this->db->where('company_control_email_address', $company_email);

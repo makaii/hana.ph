@@ -171,18 +171,71 @@ class Company extends CI_Controller {
         $this->load->view('company/company-footer');
     }
 
-    public function post_a_job(){
+    public function create_job(){
         $page_data = array(
-                'page_title' => 'Post a Job',
-                'profile_status' => true,
-                'email_address' => $this->session->userdata('email_address'));
-
+            'page_title' => 'Create Job Post',
+            'email_address' => $this->session->userdata('email_address'),
+            'job_title' => $this->session->userdata('title'),
+            'job_type' => $this->session->userdata('jobtype'),
+            'job_location' => $this->session->userdata('location'),
+            'job_salary' => $this->session->userdata('salary'),
+            'job_email' =>$this->session->userdata('email'),
+            'job_description' => $this->session->userdata('jobdescription'),
+        );
         $this->session->set_userdata($page_data);
+
         $this->load->view('company/company-header',$page_data);
         $this->load->view('company/register-style.php');
-        $this->load->view('company/post-a-job');
+        $this->load->view('company/create-a-job');
         $this->load->view('company/company-footer');
+    }   
+
+    public function validate_create_job(){
+            $this->form_validation->set_rules('title', 'Job Title', 'required|max_length[25]');
+            $this->form_validation->set_rules('location', 'Job Location', 'required');
+            $this->form_validation->set_rules('jobtype', 'Job Type', 'required');
+            $this->form_validation->set_rules('salary', 'Job Salary', 'required');
+            $this->form_validation->set_rules('email', 'Company Email', 'required');
+            $this->form_validation->set_rules('jobdescription', 'Job Description', 'required');
+
+            $this->session->set_userdata('job_title',$this->input->post('title'));
+            $this->session->set_userdata('job_location',$this->input->post('location'));
+            $this->session->set_userdata('job_type',$this->input->post('jobtype'));
+            $this->session->set_userdata('job_salary',$this->input->post('salary'));
+            $this->session->set_userdata('job_email',$this->input->post('email'));
+            $this->session->set_userdata('job_description',$this->input->post('jobdescription'));
+
+            if ($this->form_validation->run() === true) {
+
+                $profile_data = array(
+                'page_title' => 'Validate Job Post',
+                'email_address' => $this->session->userdata('email_address'),
+                'job_title' => $this->session->userdata('title'),
+                'job_type' => $this->session->userdata('jobtype'),
+                'job_location' => $this->session->userdata('location'),
+                'job_salary' => $this->session->userdata('salary'),
+                'job_email' =>$this->session->userdata('email'),
+                'job_description' => $this->session->userdata('jobdescription'),
+                 );
+
+                $this->session->set_userdata($profile_data);
+                $this->load->view('company/company-header',$profile_data);
+                $this->load->view('company/register-style.php');
+                $this->load->view('company/success-post');
+                $this->load->view('company/company-footer');
+            }
+            else {
+                $this->session->set_userdata('job_title',$this->input->post('title'));
+                $this->session->set_userdata('job_location',$this->input->post('location'));
+                $this->session->set_userdata('job_type',$this->input->post('jobtype'));
+                $this->session->set_userdata('job_salary',$this->input->post('salary'));
+                $this->session->set_userdata('job_email',$this->input->post('email'));
+                $this->session->set_userdata('job_description',$this->input->post('jobdescription'));
+                $this->create_job();
+
+            }
     }
+
     public function view_job($slug = NULL){
         $page_data = array(
                 'page_title' => 'View Job Details',
@@ -215,6 +268,8 @@ class Company extends CI_Controller {
 
         $data ['job_title'] = 'Edit Post';
         
+       
+
         $this->session->set_userdata($page_data);
         $this->load->view('company/company-header',$page_data);
         $this->load->view('company/register-style.php');
@@ -222,31 +277,33 @@ class Company extends CI_Controller {
         $this->load->view('company/company-footer');
     }
     
-    public function success_job(){
-        $page_data = array(
-                'page_title' => 'Edit Job Post',
-                'profile_status' => true,
-                'email_address' => $this->session->userdata('email_address'));
+    // public function success_job(){
+    //     $page_data = array(
+    //             'page_title' => 'Edit Job Post',
+    //             'profile_status' => true,
+    //             'email_address' => $this->session->userdata('email_address'));
 
-         $this->session->set_userdata($page_data);
-        $this->load->view('company/company-header',$page_data);
-        $this->load->view('company/register-style.php');
-        $this->load->view('company/edit-job');
-        $this->load->view('company/company-footer');
-    }  
-    public function update_job(){
+    //      $this->session->set_userdata($page_data);
+    //     $this->load->view('company/company-header',$page_data);
+    //     $this->load->view('company/register-style.php');
+    //     $this->load->view('company/edit-job');
+    //     $this->load->view('company/company-footer');
+    // }  
+    public function success_update_job($id){
         $page_data = array(
                 'page_title' => 'Update Job Post',
                 'profile_status' => true,
                 'email_address' => $this->session->userdata('email_address'));
         
-
-
          $this->session->set_userdata($page_data);
         $this->load->view('company/company-header',$page_data);
         $this->load->view('company/register-style.php');
         $this->load->view('company/success-update');
         $this->load->view('company/company-footer');
     }     
+
+
+    
+ 
 
 }

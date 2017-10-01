@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <h4 class="white" style="text-align: center;">Edit <?php echo $jobs_tbl['job_title'];?> Post</h4> 
-      <?php form_open('company/update_job');?>
+      
     </div>
 
     <div class="row">
@@ -104,7 +104,7 @@
                     <div class="col-lg-10">
                       <div class="col-lg-4"></div>
                       <div class="col-lg-4">
-                         <a href="<?php echo base_url()?>company/update_job" type="submit" class="btn btn-success btn-block">Update</a>
+                         <a href="<?php echo base_url();?>company/success_update_job/<?php echo $jobs_tbl['job_id'];?>" type="submit" class="btn btn-success btn-block">Update</a>
 
                       </div>
                       <div class="col-lg-4"></div>
