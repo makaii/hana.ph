@@ -233,6 +233,20 @@ class Company extends CI_Controller {
         $this->load->view('company/register-style.php');
         $this->load->view('company/edit-job');
         $this->load->view('company/company-footer');
-    }       
+    }  
+    public function update_job(){
+        $page_data = array(
+                'page_title' => 'Update Job Post',
+                'profile_status' => true,
+                'email_address' => $this->session->userdata('email_address'));
+        
+
+
+         $this->session->set_userdata($page_data);
+        $this->load->view('company/company-header',$page_data);
+        $this->load->view('company/register-style.php');
+        $this->load->view('company/success-update');
+        $this->load->view('company/company-footer');
+    }     
 
 }

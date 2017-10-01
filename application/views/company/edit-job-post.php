@@ -104,18 +104,14 @@
                     <div class="col-lg-10">
                       <div class="col-lg-4"></div>
                       <div class="col-lg-4">
-                         <button type="submit" class="btn btn-success btn-block">Update</button>
+                         <a href="<?php echo base_url()?>company/update_job" type="submit" class="btn btn-success btn-block">Update</a>
 
                       </div>
                       <div class="col-lg-4"></div>
                     </div>
                     <div class="col-lg-1"></div>
                   </div>
-
-
-
       </div>
-
 
       <div class="col-md-2">
         
