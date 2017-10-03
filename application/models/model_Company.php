@@ -42,12 +42,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$this->db->insert('company_profile_tbl', $profile_data);
 			}
 		}
+		public function create_job_post(){
 
+		$data = array(
+			'job_title' => ,
+			'job_type' => ,
+			'job_company' => ,
+			'job_email' => ,
+			'job_location' => ,
+			'job_description' => ,
+			'job_salary' => ,
+			'job_date_posted' => ,
+			'job_slug' => ,
+			'job_status' => ,
 
+			 );
+		 return $this->db->insert('jobs_tbl',$data);
 
+		}
+		public function update_job_post(){
+		$data = array(
+			'job_title' => ,
+			'job_type' => ,
+			'job_company' => ,
+			'job_email' => ,
+			'job_location' => ,
+			'job_description' => ,
+			'job_salary' => ,
+			'job_date_posted' => ,
+			'job_slug' => ,
+			'job_status' => ,
 
+			 );
 
+		$this->db->where('id', $this->input->post('id'));
+		return $this->db->update('jobs_tbl', $data);
 
+		}
+		public function delete_job_post(){
+			$this->db->where('job_id',$this->input->session('job_id'));
+			$this->db->update('job_id',array('job_status' => 0));
+		}
 
 
 }
