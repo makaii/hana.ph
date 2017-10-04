@@ -3,12 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('model_Admin');
+	}
+
 	public function index()
 	{
 		if ($this->session->userdata('logged_in') && ($this->session->userdata('user_type') == 'admin'))
 		{
-			$this->load->model('model_Admin');
-
 			$page_data = array
 			(
 				'page_title' 			=>	'Dashboard',
@@ -47,8 +51,6 @@ class Admin extends CI_Controller {
 	{
 		if ($this->session->userdata('logged_in') && ($this->session->userdata('user_type') == 'admin'))
 		{
-			$this->load->model('model_Admin');
-
 			$page_data = array
 			(
 				'page_title'		=>	'Applicants',
@@ -85,8 +87,6 @@ class Admin extends CI_Controller {
 	{
 		if ($this->session->userdata('logged_in') && ($this->session->userdata('user_type') == 'admin'))
 		{
-			$this->load->model('model_Admin');			
-
 			$page_data = array
 			(
 				'page_title'		=>	'Companies',
@@ -121,8 +121,6 @@ class Admin extends CI_Controller {
 	{
 		if ($this->session->userdata('logged_in') && ($this->session->userdata('user_type') == 'admin'))
 		{
-			$this->load->model('model_Admin');
-
 			$page_data = array
 			(
 				'page_title'		=>	'Jobs',
@@ -189,16 +187,15 @@ class Admin extends CI_Controller {
 
 	public function approve_job($job_id)
 	{
-		$this->load->model('model_Admin');
 		$this->model_Admin->approve_job($job_id);
+		redirect(base_url('admin/job'));
 	}
 
 
 
 	public function verify_company($company_email)
 	{
-		$this->load->model('model_Admin');
-		$this->model_Admin->verify_company_profile($company_email);
+		 $this->model_Admin->verify_company_profile($company_email);
 		$this->model_Admin->verify_company($company_email);
 		redirect(base_url('admin/company'));
 	}

@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Main extends CI_Controller {
 
-	Public function _construct() { 
+	Public function _construct()
+	{ 
 		Parent::_construct(); 
 	}
 
@@ -83,12 +84,6 @@ class Main extends CI_Controller {
 		}
 
 		redirect(base_url('login'));
-	}
-
-
-	public function search()
-	{
-		
 	}
 
 

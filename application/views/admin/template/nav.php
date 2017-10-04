@@ -18,22 +18,19 @@
                 <a><i class="fa fa-fw fa-file"></i> Reports<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">Daily Report</a>
+                        <a href="<?php  ?>">Daily Report</a>
                     </li>
                     <li>
-                        <a href="#">Weekly Report</a>
+                        <a href="<?php  ?>">Weekly Report</a>
                     </li>
                     <li>
-                        <a href="#">Monthly Report</a>
+                        <a href="<?php  ?>">Monthly Report</a>
                     </li>
                     <li>
-                        <a href="#">Bi-monthly Report</a>
+                        <a href="<?php  ?>">Quarterly Report</a>
                     </li>
                     <li>
-                        <a href="#">Quarterly Report</a>
-                    </li>
-                    <li>
-                        <a href="#">Yearly Report</a>
+                        <a href="<?php  ?>">Yearly Report</a>
                     </li>
                 </ul>
             </li>

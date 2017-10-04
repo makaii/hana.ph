@@ -44,6 +44,7 @@ class model_Admin extends CI_Model {
 
 	function get_total_unapproved_jobs()
 	{
+		$this->db->where('job_status', 0);
 		$query = $this->db->count_all_results('jobs_tbl');
 		return $query;
 	}
@@ -87,8 +88,17 @@ class model_Admin extends CI_Model {
 	// Jobs
 	function get_unapproved_jobs()
 	{
+		$this->db->where('job_status', 0);
 		$query = $this->db->get('jobs_tbl');
 		return $query->result_array();
+	}
+	function approve_job($job_id)
+	{
+		if (!empty($job_id)) {
+			$this->db->set('job_status', 1);
+			$this->db->where('job_id', $job_id);
+			$this->db->update('jobs_tbl');
+		}
 	}
 
 

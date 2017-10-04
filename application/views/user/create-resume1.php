@@ -116,11 +116,11 @@
       </div>
 
       <div class="row">
-        <div class="col-lg-7">
+        <div class="col-lg-8">
           <div class="form-group">
             <label>Mobile number:</label>
             <input type="text" name="mobileNumber" class="form-control" value="<?php echo $applicant_mobile_number; ?>">
-            <small class="text-muted">This mobile number will be be public</small>
+            <small class="text-muted">This mobile number will be shown to the public</small>
             <div>
               <?php echo form_error('mobileNumber', '<small class="text-danger">','</small>'); ?>
             </div>

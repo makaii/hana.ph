@@ -66,7 +66,17 @@
         <!-- /. ROW  -->
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-4">
+            <div class="col-md-4">
+                <div class="panel panel-info no-border">
+                    <div class="panel-heading">
+                        Recent Activities
+                    </div>
+                    <div class="panel-body">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
                 <div class="panel panel-primary no-border">
                     <div class="panel-heading">
                         Newest Registered  Users
