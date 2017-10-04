@@ -38,7 +38,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
         <span class="sr-only">Toggle navigation</span>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url('company/'); ?>">ICON</a>
+      <a href="<?php echo base_url(); ?>" class="navbar-left"><img class="img-circle" src="<?php echo base_url('assets/img/icons/icon.png'); ?>" style="max-width:85px; max-height:80px;margin-top: 5px"></a>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse-01">
@@ -49,7 +49,7 @@
       <div class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="<?php echo base_url('profile/'); ?>"><?php echo $email_address; ?></a>
+          <a href="<?php echo base_url('company/create_profile'); ?>"><?php echo $email_address; ?></a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <i class="fui-gear"></i></a>

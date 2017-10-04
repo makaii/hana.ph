@@ -22,6 +22,7 @@ class Company extends CI_Controller {
     }
 
     public function create_profile(){
+
         if ($this->session->userdata('profile_status') == false) {
             $page_data = array(
                 'page_title' => 'Create Profile',
@@ -38,7 +39,7 @@ class Company extends CI_Controller {
             $this->session->set_userdata($profile_date);
 
             $this->load->view('company/company-header',$page_data);
-            $this->load->view('company/create-profile');
+            $this->load->view('company/create-profile1');
             $this->load->view('company/company-footer');
         }
 
@@ -50,8 +51,9 @@ class Company extends CI_Controller {
 
             $this->session->set_userdata($page_data);
 
+
             $this->load->view('company/company-header',$page_data);
-            $this->load->view('company/employee-profile');
+            $this->load->view('company/view-company-profile');
             $this->load->view('company/company-footer');
         }
     }
@@ -74,6 +76,9 @@ class Company extends CI_Controller {
         $this->load->view('company/create-profilev2');
         $this->load->view('company/company-footer');
     }
+
+    
+
     public function validate_profile(){
         $this->form_validation->set_rules('companyname', 'Company Name', 'required|max_length[25]');
         $this->form_validation->set_rules('companysize', 'Company Size', 'required|max_length[25]');
@@ -99,10 +104,12 @@ class Company extends CI_Controller {
             'company_contact_person' => $this->session->userdata('company_contact_person'),
             'company_address' => $this->session->userdata('company_address'),
             'company_description' => $this->session->userdata('company_description'),
+            
              );
 
             $this->session->set_userdata($profile_data);
             $this->load->view('company/company-header',$profile_data);
+            session_destroy();
             $this->load->view('company/register-style.php');
             $this->load->view('company/company-profile-success');
             $this->load->view('company/company-footer');
@@ -118,7 +125,12 @@ class Company extends CI_Controller {
 
         }
 
+
     }
+    
+   
+
+    
      public function view_company_profile(){
         $page_data = array(
             'page_title' => 'View Company Profile',
@@ -128,8 +140,9 @@ class Company extends CI_Controller {
             'company_contact_person' => $this->session->userdata('company_contact_person'),
             'company_address' => $this->session->userdata('company_address'),
             'company_description' => $this->session->userdata('company_description'),
+            'company_email' => $this->session0->userdata('company_email'),
              );
-
+        $this->model_Company->get_company_profile_data($company_email);
         $this->load->view('company/company-header',$page_data);
         $this->load->view('company/register-style.php');
         $this->load->view('company/view-company-profile');
@@ -155,6 +168,7 @@ class Company extends CI_Controller {
     }
 
     public function job_posts(){
+
          $page_data = array(
                 'page_title' => 'Job Posts',
                 'profile_status' => true,
@@ -164,77 +178,97 @@ class Company extends CI_Controller {
         $data['posts'] = $this->model_Company->get_posts(); 
 
         $this->session->set_userdata($page_data);
+
         $this->load->view('company/company-header',$page_data);
         $this->load->view('company/register-style.php');
         $this->load->view('company/job-posts',$data);
-
         $this->load->view('company/company-footer');
     }
 
-    public function create_job(){
+     public function create_job(){
+
         $page_data = array(
             'page_title' => 'Create Job Post',
             'email_address' => $this->session->userdata('email_address'),
-            'job_title' => $this->session->userdata('title'),
-            'job_type' => $this->session->userdata('jobtype'),
-            'job_location' => $this->session->userdata('location'),
-            'job_salary' => $this->session->userdata('salary'),
-            'job_email' =>$this->session->userdata('email'),
-            'job_description' => $this->session->userdata('jobdescription'),
+            'job_title' => $this->session->userdata('job_title'),
+            'job_type' => $this->session->userdata('job_type'),
+            'job_location' => $this->session->userdata('job_location'),
+            'job_salary' => $this->session->userdata('job_salary'),
+            'job_email' =>$this->session->userdata('job_email'),
+            'job_description' => $this->session->userdata('job_description'),
         );
         $this->session->set_userdata($page_data);
+        
 
         $this->load->view('company/company-header',$page_data);
         $this->load->view('company/register-style.php');
         $this->load->view('company/create-a-job');
         $this->load->view('company/company-footer');
-    }   
-
+    }      
     public function validate_create_job(){
-            $this->form_validation->set_rules('title', 'Job Title', 'required|max_length[25]');
-            $this->form_validation->set_rules('location', 'Job Location', 'required');
+            $this->form_validation->set_rules('jobtitle', 'Job Title', 'required|max_length[25]');
+            $this->form_validation->set_rules('joblocation', 'Job Location', 'required');
             $this->form_validation->set_rules('jobtype', 'Job Type', 'required');
-            $this->form_validation->set_rules('salary', 'Job Salary', 'required');
-            $this->form_validation->set_rules('email', 'Company Email', 'required');
+            $this->form_validation->set_rules('jobsalary', 'Job Salary', 'required');
+            $this->form_validation->set_rules('jobemail', 'Company Email', 'required');
             $this->form_validation->set_rules('jobdescription', 'Job Description', 'required');
 
-            $this->session->set_userdata('job_title',$this->input->post('title'));
-            $this->session->set_userdata('job_location',$this->input->post('location'));
+            $this->session->set_userdata('job_title',$this->input->post('jobtitle'));
+            $this->session->set_userdata('job_location',$this->input->post('joblocation'));
             $this->session->set_userdata('job_type',$this->input->post('jobtype'));
-            $this->session->set_userdata('job_salary',$this->input->post('salary'));
-            $this->session->set_userdata('job_email',$this->input->post('email'));
+            $this->session->set_userdata('job_salary',$this->input->post('jobsalary'));
+            $this->session->set_userdata('job_email',$this->input->post('jobemail'));
             $this->session->set_userdata('job_description',$this->input->post('jobdescription'));
 
             if ($this->form_validation->run() === true) {
 
-                $profile_data = array(
+
+
+                $job_profile_data = array(
                 'page_title' => 'Validate Job Post',
                 'email_address' => $this->session->userdata('email_address'),
-                'job_title' => $this->session->userdata('title'),
-                'job_type' => $this->session->userdata('jobtype'),
-                'job_location' => $this->session->userdata('location'),
-                'job_salary' => $this->session->userdata('salary'),
-                'job_email' =>$this->session->userdata('email'),
-                'job_description' => $this->session->userdata('jobdescription'),
+                'job_title' => $this->session->userdata('job_title'),
+                'job_type' => $this->session->userdata('job_type'),
+                'job_location' => $this->session->userdata('job_location'),
+                'job_salary' => $this->session->userdata('job_salary'),
+                'job_email' =>$this->session->userdata('job_email'),
+                'job_description' => $this->session->userdata('job_description'),
                  );
 
-                $this->session->set_userdata($profile_data);
-                $this->load->view('company/company-header',$profile_data);
+                $job_data = array(
+                'job_title' => $this->session->userdata('job_title'),
+                'job_type' => $this->session->userdata('job_type'),
+                'job_location' => $this->session->userdata('job_location'),
+                'job_salary' => $this->session->userdata('job_salary'),
+                'job_email' =>$this->session->userdata('job_email'),
+                'job_slug' =>$this->session->userdata('job_title'),
+                'job_status' =>1,
+                'job_description' => $this->session->userdata('job_description'),
+                );
+
+
+                $this->session->set_userdata($job_profile_data);
+                $this->load->model('model_Company');
+                $this->model_Company->create_job_post($job_data);
+                $this->load->view('company/company-header',$job_profile_data);
+                session_destroy($job_data);
                 $this->load->view('company/register-style.php');
                 $this->load->view('company/success-post');
                 $this->load->view('company/company-footer');
+
             }
             else {
-                $this->session->set_userdata('job_title',$this->input->post('title'));
-                $this->session->set_userdata('job_location',$this->input->post('location'));
+                $this->session->set_userdata('job_title',$this->input->post('jobtitle'));
+                $this->session->set_userdata('job_location',$this->input->post('joblocation'));
                 $this->session->set_userdata('job_type',$this->input->post('jobtype'));
-                $this->session->set_userdata('job_salary',$this->input->post('salary'));
-                $this->session->set_userdata('job_email',$this->input->post('email'));
+                $this->session->set_userdata('job_salary',$this->input->post('jobsalary'));
+                $this->session->set_userdata('job_email',$this->input->post('jobemail'));
                 $this->session->set_userdata('job_description',$this->input->post('jobdescription'));
                 $this->create_job();
 
             }
     }
+    
 
     public function view_job($slug = NULL){
         $page_data = array(

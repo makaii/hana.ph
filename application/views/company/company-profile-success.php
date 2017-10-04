@@ -13,7 +13,9 @@
          <span>
            This usually takes <span class="text-info"><b>30 mins</b></span>, we will notify you through your email.
          </span>
+      
        </p>
+       <a  class="btn btn-info btn-block" href="<?php base_url();?>company/view_company_profile"> View Company Profile</a>
       </div>
     </div>
   </div>

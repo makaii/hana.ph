@@ -15,8 +15,8 @@
             <div class="col-lg-1"></div>
             <div class="col-xs-12 col-lg-10">
               <p class="help-block">Input Job Title</p>
-                <input type="text" class="form-control" name="title" placeholder="Job Title" value="<?php echo $job_title;?>"/>
-               <?php echo form_error('title','<small class="text-danger"> ', '</small>'); ?>
+                <input type="text" class="form-control" name="jobtitle" placeholder="Job Title" value="<?php echo $job_title;?>">
+               <?php echo form_error('jobtitle','<small class="text-danger"> ', '</small>'); ?>
             </div>
             <div class="col-lg-1"></div>
         </div>
@@ -25,14 +25,14 @@
               <div class="col-lg-1"></div>
                 <div class="col-xs-12 col-lg-10">
                 <p class="help-block">Input the possible branch </p>
-                      <select class="form-control" name="location" value="<?php echo $job_location;?>" >
+                      <select class="form-control" name="joblocation" value="<?php echo $job_location;?>" >
                         <option selected disabled>Location</option>
-                                <option value="Cavite">Cavite</option>
-                  <option value="Marikina">Marikina</option>
-                  <option value="Cebu">Cebu</option>
-                  <option value="Pasig">Pasig</option>
+                        <option value="Cavite">Cavite</option>
+                        <option value="Marikina">Marikina</option>
+                        <option value="Cebu">Cebu</option>
+                        <option value="Pasig">Pasig</option>
                         </select>
-                      <?php echo form_error('location', '<small class="text-danger"> ', '</small>'); ?>
+                      <?php echo form_error('joblocation', '<small class="text-danger"> ', '</small>'); ?>
 
                     
                     </div>
@@ -63,7 +63,7 @@
                           <div class="col-lg-1"></div>
                           <div class="col-lg-10 col-xs-12">
                             <p class="help-block"> Input the Offered Amount</p>     
-                         <select class="form-control" name="salary" value="<?php echo $job_salary;?>">
+                         <select class="form-control" name="jobsalary" value="<?php echo $job_salary;?>">
                                     <option selected disabled>Salary</option>
                                     <option value="1000">1,000</option>
                                     <option value="10000">10,000</option>
@@ -73,7 +73,7 @@
                                     <option value="30000">30,000</option>
                                     <option value="35000">35,000</option>
                                    </select>
-                          <?php echo form_error('salary', '<small class="text-danger"> ', '</small>'); ?>
+                          <?php echo form_error('jobsalary', '<small class="text-danger"> ', '</small>'); ?>
                           </div>
                            <div class="col-lg-1"><p class="help-block"></p></div>
                       </div>
@@ -82,8 +82,8 @@
                   <div class="col-lg-1"></div>
                   <div class="col-xs-12 col-lg-10">
                       <p class="help-block">Applications for this job will be sent to the following email address:</p> 
-                      <input type="email" class="form-control" name="email" placeholder="Email" value="<?php echo $email_address ; ?>">
-                      <p class="help-block"><?php echo form_error('email', '<small class="text-danger"> ', '</small>'); ?></p>
+                      <input type="email" class="form-control" name="jobemail" placeholder="Email" value="<?php echo $email_address ; ?>">
+                      <p class="help-block"><?php echo form_error('jobemail', '<small class="text-danger"> ', '</small>'); ?></p>
                   </div>
                    <div class="col-lg-1"><p class="help-block">
 </p></div>
@@ -94,7 +94,7 @@
                         <div class="col-lg-1"></div>
                         <div class="col-xs-12 col-lg-10">
                        <p class="help-block">Describe the responsibilities of this Job, Required skills and work experience or education.</p> 
-                       <textarea class="form-control" rows="4" name="jobdescription" placeholder="Job Description" value="<?php echo $job_description; ?>"></textarea>
+                       <textarea class="form-control" rows="4" name="jobdescription" placeholder="Job Description"><?php echo $job_description;?></textarea>
                            <?php echo form_error('jobdescription', '<small class="text-danger"> ', '</small>'); ?>
                         </div>
                       <div class="col-lg-1"></div>
@@ -124,5 +124,6 @@
       </div>
 
     </div>
+  </form>
   </div>
 </div>
