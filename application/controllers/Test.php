@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Test extends CI_Controller {
 
+    public function index()
+    {
+
+    }
+
     public function get_profile()
     {
         $this->load->model('model_Company');
