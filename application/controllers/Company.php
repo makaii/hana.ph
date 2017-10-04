@@ -108,7 +108,7 @@ class Company extends CI_Controller {
     }
 
     public function job_posts(){
-
+       
          $page_data = array(
                 'page_title' => 'Job Posts',
                 'profile_status' => true,
@@ -175,27 +175,29 @@ class Company extends CI_Controller {
                 'job_description' => $this->session->userdata('job_description'),
                  );
 
+                $slug = url_title($this->session->userdata('job_title'));
+
                 $job_data = array(
                 'job_title' => $this->session->userdata('job_title'),
                 'job_type' => $this->session->userdata('job_type'),
                 'job_location' => $this->session->userdata('job_location'),
                 'job_salary' => $this->session->userdata('job_salary'),
                 'job_email' =>$this->session->userdata('job_email'),
-                'job_slug' =>$this->session->userdata('job_title'),
+                'job_slug' => $slug,
                 'job_status' =>1,
                 'job_description' => $this->session->userdata('job_description'),
                 );
 
-
                 $this->session->set_userdata($job_profile_data);
+
                 $this->load->model('model_Company');
                 $this->model_Company->create_job_post($job_data);
+       
                 $this->load->view('company/company-header',$job_profile_data);
-                session_destroy($job_data);
                 $this->load->view('company/register-style.php');
                 $this->load->view('company/success-post');
                 $this->load->view('company/company-footer');
-
+                
             }
             else {
                 $this->session->set_userdata('job_title',$this->input->post('jobtitle'));
@@ -229,18 +231,26 @@ class Company extends CI_Controller {
         $this->load->view('company/company-footer');
     }
     public function edit_job($slug){
-        $page_data = array(
-                'page_title' => 'Edit Job Post',
-                'profile_status' => true,
-                'email_address' => $this->session->userdata('email_address'));
 
-        $this->load->model('model_Company');
+         $this->load->model('model_Company');
         $data['jobs_tbl'] = $this->model_Company->get_posts($slug);
                 if(empty($data['jobs_tbl'])){
                     show_404();
                 }
-        
-        
+
+
+        $page_data = array(
+                'page_title' => 'Edit Job Post',
+                'profile_status' => true,
+                'email_address' => $this->session->userdata('email_address'),
+                'job_title' => $this->session->userdata('job_title'),
+                'job_type' => $this->session->userdata('job_type'),
+                'job_location' => $this->session->userdata('job_location'),
+                'job_salary' => $this->session->userdata('job_salary'),
+                'job_email' =>$this->session->userdata('job_email'),
+                'job_description' => $this->session->userdata('job_description'),
+            );
+
         $this->session->set_userdata($page_data);
         $this->load->view('company/company-header',$page_data);
         $this->load->view('company/register-style.php');
@@ -249,36 +259,32 @@ class Company extends CI_Controller {
 
     }
     
-    
-    public function success_update_job($id){
-        $page_data = array(
-                'page_title' => 'Update Job Post',
-                'profile_status' => true,
-                'email_address' => $this->session->userdata('email_address'));
-        $data = array(
-                'job_title' => $this->session->userdata('job_title'),
-                'job_type' => $this->session->userdata('job_type'),
-                'job_location' => $this->session->userdata('job_location'),
-                'job_salary' => $this->session->userdata('job_salary'),
-                'job_email' =>$this->session->userdata('job_email'),
-                'job_slug' =>$this->session->userdata('job_title'),
-                'job_status' =>1,
-                'job_description' => $this->session->userdata('job_description'),
-            );
-        $this->session->set_userdata('job_title',$this->input->post('jobtitle'));
-        $this->session->set_userdata('job_location',$this->input->post('joblocation'));
-        $this->session->set_userdata('job_type',$this->input->post('jobtype'));
-        $this->session->set_userdata('job_salary',$this->input->post('jobsalary'));
-        $this->session->set_userdata('job_email',$this->input->post('jobemail'));
-        $this->session->set_userdata('job_description',$this->input->post('jobdescription'));
+    public function update_job($id){
 
-        $this->session->set_userdata($page_data);
-        $this->load->model('model_Company');
-        $this->model_Company->update_job_post($id,$data);
-        $this->load->view('company/company-header',$page_data);
-        $this->load->view('company/register-style.php');
-        $this->load->view('company/success-update');
-        $this->load->view('company/company-footer');
+       //  $update_data = array(
+       //          'page_title' => 'Update Job Post',
+       //          'profile_status' => true,
+       //          'email_address' => $this->session->userdata('email_address'),
+       //          'job_title' => $this->session->userdata('job_title'),
+       //          'job_type' => $this->session->userdata('job_type'),
+       //          'job_location' => $this->session->userdata('job_location'),
+       //          'job_salary' => $this->session->userdata('job_salary'),
+       //          'job_email' =>$this->session->userdata('job_email'),
+       //          'job_status' =>1,
+       //          'job_description' => $this->session->userdata('job_description'),
+       //      );
+        
+
+       // $this->session->set_userdata($update_data);
+       //  $this->load->model('model_Company');
+       //  $this->model_Company->update_job_post($id);
+       //  $this->load->view('company/company-header',$update_data);
+       //  $this->load->view('company/register-style.php');
+       //  $this->load->view('company/success-update');
+       //  $this->edit_job();
+       //  $this->load->view('company/company-footer');
+
+        
     }     
 
 

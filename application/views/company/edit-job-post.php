@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+<form action="<?php echo base_url('company/update_job')?>" method="POST">
       <h4 class="white" style="text-align: center;">Edit <?php echo $jobs_tbl['job_title'];?> Post</h4> 
       <input type="hidden" name="id" value="<?php echo $jobs_tbl['job_id']?>">
     </div>
@@ -8,7 +9,7 @@
     <div class="row">
       <div class="col-md-2">
         
-      </div>
+      </div>  
 
 
       <div class="col-md-8 container well">
@@ -26,7 +27,7 @@
               <div class="col-lg-1"></div>
                 <div class="col-xs-12 col-lg-10">
                 <p class="help-block">Input the possible branch </p>
-                      <select class="form-control" name="location" value="<?php echo $jobs_tbl['job_location']; ?>">
+                      <select class="form-control" name="joblocation" value="<?php echo $jobs_tbl['job_location']; ?>">
                         <option selected disabled>Location</option>
                                 <option value="Cavite">Cavite</option>
                   <option value="Marikina">Marikina</option>
@@ -61,7 +62,7 @@
                           <div class="col-lg-1"></div>
                           <div class="col-lg-10 col-xs-12">
                             <p class="help-block"> Input the Offered Amount</p>     
-                         <select class="form-control" name="salary" value="<?php ;?>">
+                         <select class="form-control" name="jobsalary" value="<?php ;?>">
                                     <option selected disabled>Salary</option>
                                     <option value="1000">1,000</option>
                                     <option value="10000">10,000</option>
@@ -81,7 +82,7 @@
                   <div class="col-lg-1"></div>
                   <div class="col-xs-12 col-lg-10">
                       <p class="help-block">Applications for this job will be sent to the following email address:</p> 
-                      <input type="email" class="form-control" name="email" placeholder="Email" value="<?php echo $email_address; ?>">
+                      <input type="email" class="form-control" name="jobemail" placeholder="Email" value="<?php echo $email_address; ?>">
                       <p class="help-block"><small class="text-danger"></small>
                   </div>
                    <div class="col-lg-1"><p class="help-block"><small class="text-danger"></small></p></div>
@@ -104,7 +105,7 @@
                     <div class="col-lg-10">
                       <div class="col-lg-4"></div>
                       <div class="col-lg-4">
-                         <a href="<?php echo base_url();?>company/success_update_job/<?php echo $jobs_tbl['job_id'];?>" type="submit" class="btn btn-success btn-block">Update</a>
+                         <a href="<?php echo base_url();?>company/update_job/<?php echo $jobs_tbl['job_id'];?>" type="submit" class="btn btn-success btn-block">Update</a>
 
                       </div>
                       <div class="col-lg-4"></div>
@@ -116,7 +117,7 @@
       <div class="col-md-2">
         
       </div>
-
+</form>
     </div>
   </div>
 </div>
