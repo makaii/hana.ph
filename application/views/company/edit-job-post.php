@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <h4 class="white" style="text-align: center;">Edit <?php echo $jobs_tbl['job_title'];?> Post</h4> 
-      
+      <input type="hidden" name="id" value="<?php echo $jobs_tbl['job_id']?>">
     </div>
 
     <div class="row">
@@ -16,7 +16,7 @@
             <div class="col-lg-1"></div>
             <div class="col-xs-12 col-lg-10">
               <p class="help-block">Input Job Title</p>
-                <input type="text" class="form-control" name="title" placeholder="Job Title" value="<?php echo $jobs_tbl['job_title']; ?>">
+                <input type="text" class="form-control" name="jobtitle" placeholder="Job Title" value="<?php echo $jobs_tbl['job_title']; ?>">
                
             </div>
             <div class="col-lg-1"><p class="help-block"><small class="text-danger"></small></p></div>

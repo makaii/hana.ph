@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$this->db->where('company_control_email_address', $company_email);
 				$this->db->where('company_profile_status', 1);
 				$query = $this->db->get('company_profile_tbl');
+
 				if (!empty($query) && $query->num_rows() == 1)
 				{
 					return $query->row();
@@ -56,11 +57,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 
-		// public function update_job_post(){
-		// $data = array(
-			
+		public function update_job_post($id,$data)
+		{
+			$this->db->where('job_id', $id);
+			return $this->db->update('jobs_tbl', $data);
 
-		// 	 );
+		}
 
 		// $this->db->where('id', $this->input->post('id'));
 		// return $this->db->update('jobs_tbl', $data);

@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <form method="POST" action="<?php echo base_url('company/validate_profile'); ?>">
+    <form method="POST" action="<?php echo base_url('profile/validate_profile'); ?>">
 
       <div class="row">
         <div class="col-md-offset-3 col-md-6">

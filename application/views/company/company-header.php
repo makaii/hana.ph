@@ -49,7 +49,7 @@
       <div class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="<?php echo base_url('company/create_profile'); ?>"><?php echo $email_address; ?></a>
+          <a href="<?php echo base_url('profile/'); ?>"><?php echo $email_address; ?></a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <i class="fui-gear"></i></a>

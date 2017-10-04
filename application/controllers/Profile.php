@@ -5,17 +5,27 @@ class Profile extends CI_Controller {
 
     public function index()
     {
-    	if ($this->session->userdata('profile_status')) {
+    	if ($this->session->userdata('profile_status'))
+        {
     		$this->load->model('model_Company');
-            $row = $this->model_Company->get_company_profile_data($this->session->userdata('email_address'));
-            $profile_data = array();
+            $email = $this->session->userdata('email_address');
+            $row = $this->model_Company->get_company_profile_data($email);
+            $profile_data = array(
+                'company_email' => $row->company_email,
+                'company_name' => $row->company_name,
+                'company_address' => $row->company_address,
+                'company_description' => $row->company_description,
+                'company_size' => $row->company_size,
+                'company_contact_person' => $row->company_contact_person,
+            );
+
             $page_data = array(
                 'page_title'    => 'Profile',
                 'email_address' => $this->session->userdata('email_address'),
             );
             $this->session->set_userdata($page_data);
             $this->load->view('company/company-header', $page_data);
-            $this->load->view('company/profile');
+            $this->load->view('company/view-company-profile', $profile_data);
             $this->load->view('company/company-footer');
     	}
     	elseif (!$this->session->userdata('profile_status'))
@@ -117,7 +127,6 @@ class Profile extends CI_Controller {
 
         }
     }
-
 
 
 }
