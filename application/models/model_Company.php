@@ -16,6 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
 		}
 
+
 		public function get_company_profile_data($company_email)
 		{
 
@@ -54,34 +55,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 
-		public function update_job_post($job_data,$id)
+		public function update_job_post($updated_data)
 		{
 			
-			echo $id;
-			// $string = $this->session->userdata('job_title');
-			// echo $string;
-			// foreach ($edit_data as $row) {
-			//     echo $row->job_title;
-			//     echo $row->job_type;
-			//     echo $row->job_salary;
-			// }
-			
-			// $slug = url_title($this->session->userdata('job_title'));
-			
-			// $info = array (
-			// 	'job_title' => $this->session->userdata('job_title'),
-   //              'job_type' => $this->session->userdata('job_type'),
-   //              'job_location' => $this->session->userdata('job_location'),
-   //              'job_salary' => $this->session->userdata('job_salary'),
-   //              'job_email' =>$this->session->userdata('job_email'),
-   //              'job_slug' =>$slug,
-   //              'job_status' =>1,
-   //              'job_description' => $this->session->userdata('job_description'),
-			// );
-			// $this->db->where('job_id', $id);
-			// return $this->db->update('jobs_tbl',$info);
-		}
+			if(!empty($updated_data))
+			{
+				$this->db->where('job_id', $this->input->post('id'));
+				$this->db->update('jobs_tbl', $updated_data);
+			}
 
+		}
+		public function delete_job_post($id)
+		{
+			
+
+			if(!empty($id))
+			{
+				$this->db->set('job_status', 0);
+				$this->db->where('job_id', $id);
+				$this->db->update('jobs_tbl');
+			}
+			die();
+
+
+
+		}
 
 
 }

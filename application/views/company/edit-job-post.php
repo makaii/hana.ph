@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-md-12">
 <form action="<?php echo base_url('company/update_job')?>" method="POST">
+ <!--  <?php echo form_open('company/update_job');?> -->
       <h4 class="white" style="text-align: center;">Edit <?php echo $jobs_tbl['job_title'];?> Post</h4> 
       <input type="hidden" name="id" value="<?php echo $jobs_tbl['job_id']?>">
     </div>
@@ -27,15 +28,13 @@
               <div class="col-lg-1"></div>
                 <div class="col-xs-12 col-lg-10">
                 <p class="help-block">Input the possible branch </p>
-                      <select class="form-control" name="joblocation" value="<?php echo $jobs_tbl['job_location']; ?>">
-                        <option selected disabled>Location</option>
-                                <option value="Cavite">Cavite</option>
-                  <option value="Marikina">Marikina</option>
-                  <option value="Cebu">Cebu</option>
-                  <option value="Pasig">Pasig</option>
-                        </select>
-                      
-                    
+                      <select class="form-control" name="joblocation" >
+                        <option selected><?php echo $jobs_tbl['job_location']; ?></option>
+                        <option value="Cavite">Cavite</option>
+                        <option value="Marikina">Marikina</option>
+                        <option value="Cebu">Cebu</option>
+                        <option value="Pasig">Pasig</option>
+                      </select>
                     </div>
                     <div class="col-lg-1"><p class="help-block"><small class="text-danger"><?php ?></small></p></div>
                 </div>
@@ -44,8 +43,8 @@
                           <div class="col-lg-1"></div>
                             <div class="col-xs-12 col-lg-10">
                             <p class="help-block">Input Job Type</p>
-                                 <select class="form-control" name="jobtype" value="<?php echo $jobs_tbl['job_type'];?>">
-                                  <option selected disabled>Job Type</option>
+                                 <select class="form-control" name="jobtype" value="">
+                                  <option selected><?php echo $jobs_tbl['job_type'];?></option>
                                   <option value="Full-Time">Full Time</option>
                                   <option value="Part-Time">Part Time</option>
                                   <option value="New-Grad">New Grad</option>
@@ -62,8 +61,8 @@
                           <div class="col-lg-1"></div>
                           <div class="col-lg-10 col-xs-12">
                             <p class="help-block"> Input the Offered Amount</p>     
-                         <select class="form-control" name="jobsalary" value="<?php ;?>">
-                                    <option selected disabled>Salary</option>
+                         <select class="form-control" name="jobsalary" value="">
+                                    <option selected><?php echo $jobs_tbl['job_salary'];?></option>
                                     <option value="1000">1,000</option>
                                     <option value="10000">10,000</option>
                                     <option value="15000">15,000</option>
@@ -103,12 +102,17 @@
                   <div class="row">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-10">
-                      <div class="col-lg-4"></div>
                       <div class="col-lg-4">
-                         <a href="<?php echo base_url();?>company/update_job/<?php echo $jobs_tbl['job_id'];?>" type="submit" class="btn btn-success btn-block">Update</a>
-
+                        <a href="<?php echo base_url();?>company/job_posts" type="submit" class="btn btn-info btn-block">Back To Posts</a>
                       </div>
-                      <div class="col-lg-4"></div>
+                      <div class="col-lg-4">
+                          <button class="btn btn-success btn-block" type="submit">Update</button>
+                          
+                      </div>
+                      <div class="col-lg-4">
+                        <form action="<?php echo base_url('company/delete_job');?>" method="POST">
+                        <a href="<?php echo base_url();?>company/delete_job/<?php echo $jobs_tbl['job_id'];?>" type="submit" class="btn btn-danger btn-block">Delete</a></form>
+                      </div>
                     </div>
                     <div class="col-lg-1"></div>
                   </div>
