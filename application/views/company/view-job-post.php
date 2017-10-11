@@ -43,8 +43,8 @@
                    <div class="row">
                             <div class="col-lg-1"></div>
                               <div class="col-xs-12 col-lg-10">
-                              Job Description 
-                                  <textarea class="form-control disabled" rows="4" name="jobdescription" placeholder="Job Description"><?php echo $jobs_tbl['job_description'];?></textarea>
+                              Job Description: <br>
+                                  <?php echo $jobs_tbl['job_description'];?>
                            
                                   </div>
                                    <div class="col-lg-1"><p class="help-block"><small class="text-danger"></small></p></div>

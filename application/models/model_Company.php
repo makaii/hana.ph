@@ -35,6 +35,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 			else
 				"no email";
+		}	
+
+		public function get_company_name($company_email)
+		{
+
+			if (!empty($company_email))
+			{
+				
+				//$this->db->get('company_name');
+				// $this->db->where('company_control_email_address', $company_email);	
+				
+				// $query = $this->db->get('company_profile_tbl');
+				$sql = "SELECT company_name from company_profile_tbl Where company_control_email_address = '$company_email'";
+				$query = $this->db->query($sql);
+
+				if ($query->num_rows() == 1) 
+				{
+					return $query->row();
+				}
+				else
+				{
+					return "No result";
+
+				}
+				//GET COMPANY NAME WHERE EMAIL  = $company_email FROM DATABASE/COMPANY PROFILE TBL.
+				//Select Company Name where company_email = $companyemail from Company Table
+
+		}
 		}
 
 		public function set_company_profile_data($profile_data)
@@ -69,13 +97,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		{
 			
 
-			if(!empty($id))
-			{
-				$this->db->set('job_status', 0);
-				$this->db->where('job_id', $id);
-				$this->db->update('jobs_tbl');
-			}
-			die();
+			// if(!empty($id))
+			// {
+			// 	$this->db->set('job_status', 0);
+			// 	$this->db->where('job_id', $id);
+			// 	$this->db->update('jobs_tbl');
+			// }
+			
 
 
 

@@ -9,7 +9,8 @@ class Company extends CI_Controller {
     		$page_data = array( 
 		   'page_title'  => 'Welcome',  
 		   'logged_in' => true,
-		   'email_address' => $this->session->userdata('email_address')
+		   'email_address' => $this->session->userdata('email_address'),
+
 			);
 			$this->load->view('company/company-header',$page_data);
 			$this->load->view('index');
@@ -51,7 +52,9 @@ class Company extends CI_Controller {
             );
 
             $this->load->model('model_Company');
+            
             $row = $this->model_Company->get_company_profile_data($this->session->userdata('email_address'));
+
             $profile_data = array(
                 'company_address' => $row->company_address,
                 'company_email' => $row->company_email,
@@ -112,9 +115,13 @@ class Company extends CI_Controller {
          $page_data = array(
                 'page_title' => 'Job Posts',
                 'profile_status' => true,
-                'email_address' => $this->session->userdata('email_address'));
-
+                'email_address' => $this->session->userdata('email_address'),
+                'company_name' => $this->session->userdata('company_name'),
+                // 'company_name' =>
+            );
+         $company_email = $this->session->userdata('email_address');
          $this->load->model('model_Company');
+        $this->model_Company->get_company_name($company_email);
         $data['posts'] = $this->model_Company->get_posts(); 
 
         $this->session->set_userdata($page_data);
@@ -136,6 +143,7 @@ class Company extends CI_Controller {
             'job_salary' => $this->session->userdata('job_salary'),
             'job_email' =>$this->session->userdata('job_email'),
             'job_description' => $this->session->userdata('job_description'),
+            'job_company' => $this->session->userdata('jobcompany'),
         );
         $this->session->set_userdata($page_data);
         
@@ -160,6 +168,7 @@ class Company extends CI_Controller {
             $this->session->set_userdata('job_email',$this->input->post('jobemail'));
             $this->session->set_userdata('job_description',$this->input->post('jobdescription'));
 
+
             if ($this->form_validation->run() === true) {
 
 
@@ -173,6 +182,7 @@ class Company extends CI_Controller {
                 'job_salary' => $this->session->userdata('job_salary'),
                 'job_email' =>$this->session->userdata('job_email'),
                 'job_description' => $this->session->userdata('job_description'),
+                // 'job_company' =>$this->session->userdata('job_company'),
                  );
 
                 $slug = url_title($this->session->userdata('job_title'));
@@ -186,6 +196,7 @@ class Company extends CI_Controller {
                 'job_slug' => $slug,
                 'job_status' =>1,
                 'job_description' => $this->session->userdata('job_description'),
+                // 'job_company' =>$this->session->userdata('job_company'),
                 );
 
                 $this->session->set_userdata($job_profile_data);
@@ -338,30 +349,28 @@ class Company extends CI_Controller {
         $this->load->view('company/company-footer');
     }
     public function success_delete_job($id){
-        $this->load->model('model_Company');
-        $this->model_Company->delete_job_post($id);
+        
 
 
          $page_data = array(
                 'page_title' => 'Job Posts',
                 'profile_status' => true,
-                'email_address' => $this->session->userdata('email_address')
-
+                'email_address' => $this->session->userdata('email_address'),
+                'job_id' => $id
             );
 
+        //  $this->load->model('model_Company');
+        // $data['posts'] = $this->model_Company->get_posts(); 
+
          $this->load->model('model_Company');
-        $data['posts'] = $this->model_Company->get_posts(); 
+         $this->model_Company->delete_job_post($id);
 
         $this->session->set_userdata($page_data);
 
         $this->load->view('company/company-header',$page_data);
         $this->load->view('company/register-style.php');
-        $this->load->view('company/delete-job-post');
+        $this->load->view('company/');
         $this->load->view('company/company-footer');
     }
-
-
-    
- 
 
 }
