@@ -77,7 +77,13 @@ class Main extends CI_Controller {
 			'company_email',
 			'company_address',
 			'company_description',
-			'contact_person'
+			// job creation sessions
+			'job_title',
+			'job_location',
+			'job_type',
+			'job_salary',
+			'job_email',
+			'job_description',
 		);
 		if (isset($profile_data)) {
 			$this->session->unset_userdata($profile_data);

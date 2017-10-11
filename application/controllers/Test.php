@@ -49,6 +49,24 @@ class Test extends CI_Controller {
 
     }
 
+
+
+    public function get_jobs()
+    {
+        $this->load->model('model_Search');
+        $input = 'web';
+
+        $query = $this->model_Search->advance_search($input);
+        if (!empty($query))
+        {
+            echo "<pre>";
+            print_r($query);
+            $sql = $this->db->last_query();;
+            echo $sql;
+            echo "</pre>";
+        }
+    }
+
         
 
 }
