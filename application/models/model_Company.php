@@ -3,11 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
 	class model_Company extends CI_Model
 	{
-		public function get_posts ($slug = FALSE){
+		public function get_posts ($slug = FALSE, $email = FALSE){
 			
 			if($slug === FALSE){
 				$this->db->order_by('job_id','DESC');
-				$this->db->where('job_status',1);
+				$this->db->where('job_status', 1);
+				$this->db->where('job_email', $email);
 				$query = $this->db->get('jobs_tbl');
 				return $query->result_array();
 			}
@@ -43,26 +44,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			if (!empty($company_email))
 			{
 				
-				//$this->db->get('company_name');
-				// $this->db->where('company_control_email_address', $company_email);	
-				
-				// $query = $this->db->get('company_profile_tbl');
-				$sql = "SELECT company_name from company_profile_tbl Where company_control_email_address = '$company_email'";
-				$query = $this->db->query($sql);
-
-				if ($query->num_rows() == 1) 
+				$query = $this->db->select('company_name')->where('company_control_email_address', $company_email)->get('company_profile_tbl');
+				if ($query->num_rows() == 1)
 				{
-					return $query->row();
+					return $query->row()->company_name;
 				}
-				else
-				{
-					return "No result";
 
-				}
-				//GET COMPANY NAME WHERE EMAIL  = $company_email FROM DATABASE/COMPANY PROFILE TBL.
-				//Select Company Name where company_email = $companyemail from Company Table
-
-		}
+			}
 		}
 
 		public function set_company_profile_data($profile_data)
@@ -107,6 +95,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
+		}
+
+
+		public function get_company_profile_status($email)
+		{
+			if (!empty($email))
+			{
+				$query = $this->db->select('company_profile_status')->where('company_email', $email)->get('company_tbl');
+				if ($query->num_rows() == 1)
+				{
+					return $query->row()->company_profile_status;
+				}
+			}
 		}
 
 

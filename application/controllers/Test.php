@@ -15,30 +15,7 @@ class Test extends CI_Controller {
 
     public function index()
     {
-
-    }
-
-    public function get_profile()
-    {
-
-    }
-
-
-
-    public function get_jobs()
-    {
-        $this->load->model('model_Search');
-        $input = 'web';
-
-        $query = $this->model_Search->search($input);
-        if (!empty($query))
-        {
-            echo "<pre>";
-            print_r($query);
-            $sql = $this->db->last_query();;
-            echo $sql;
-            echo "</pre>";
-        }
+        echo "this is the testing controller";
     }
 
         

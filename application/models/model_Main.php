@@ -60,14 +60,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		function get_profile_status($email){
 			
 			$this->db->where('applicant_email', $email);
-			$this->db->where('applicant_resume_status', 1);
 			$query = $this->db->get('applicant_tbl');
 			if ($query->num_rows() == 1) {
 				return true;
 			}
 			else{
 				$this->db->where('company_email', $email);
-				$this->db->where('company_profile_status', 1);
 				$query = $this->db->get('company_tbl');
 				if ($query->num_rows() == 1) {
 					return true;

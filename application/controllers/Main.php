@@ -84,6 +84,7 @@ class Main extends CI_Controller {
 			'job_salary',
 			'job_email',
 			'job_description',
+			'job_company',
 		);
 		if (isset($profile_data)) {
 			$this->session->unset_userdata($profile_data);
