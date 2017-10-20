@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Main extends CI_Controller {
 
-	Public function _construct()
+	public function _construct()
 	{ 
-		Parent::_construct(); 
+		Parent::_construct();
 	}
 
 	public function index()

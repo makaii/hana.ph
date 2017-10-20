@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Profile extends CI_Controller {
 
+    public function __construct()
+    {
+        $this->load->model('model_Company');
+    }
+
     public function index()
     {
     	if ($this->session->userdata('profile_status'))
