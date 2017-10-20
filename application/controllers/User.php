@@ -6,7 +6,7 @@ class User extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load-model('model_User');
+        $this->load->model('model_User');
     }
 
     public function index()

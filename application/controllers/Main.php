@@ -5,7 +5,7 @@ class Main extends CI_Controller {
 
 	public function _construct()
 	{ 
-		Parent::_construct();
+		parent::__construct();
 	}
 
 	public function index()
