@@ -360,7 +360,7 @@ class Company extends CI_Controller {
 
         $this->load->view('company/company-header',$page_data);
         $this->load->view('company/register-style.php');
-        $this->load->view('company/success-delete');
+        $this->load->view('company/success-delete.php');
         $this->load->view('company/company-footer');
         
     }
