@@ -7,14 +7,14 @@ class model_Activity extends CI_Model
 	{
 		$search_data = array(
 			'search_word' => $searched_word,
-			'search_date' => date('Y-m-d'),
+			'search_date' => date('Y-m-d H:i:s'),
 		);
 		$this->db->insert('search_tbl', $search_data);
 	}
 
 	public function set_activity($data, $activity_type)
 	{
-		$date = date('Y-m-d');
+		$date = date('Y-m-d H:i:s');
 		switch ($activity_type) {
 			case 'search':
 				$activity_data = array(
