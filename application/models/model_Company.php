@@ -85,15 +85,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		{
 			
 
-			// if(!empty($id))
-			// {
-			// 	$this->db->set('job_status', 0);
-			// 	$this->db->where('job_id', $id);
-			// 	$this->db->update('jobs_tbl');
-			// }
-			
-
-
+			if(!empty($id))
+			{
+				$this->db->set('job_status', 0);
+				$this->db->where('job_id', $id);
+				$this->db->update('jobs_tbl');
+			}
 
 		}
 

@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                   <td>Offered Salary: </td>
-                  <td><?php echo $jobs_tbl['job_salary'];?> </td>
+                  <td><?php echo "Php ";echo number_format($jobs_tbl['job_salary'],2);?> </td>
                 </tr>
                 <tr>
                   <td>Email for applicants: </td>

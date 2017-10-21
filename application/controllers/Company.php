@@ -127,7 +127,8 @@ class Company extends CI_Controller {
 
     public function job_posts()
     {
-       
+        
+
         $this->load->model('model_Company');
         $company_email = $this->session->userdata('email_address');
         $company_name = $this->model_Company->get_company_name($company_email);
@@ -139,6 +140,21 @@ class Company extends CI_Controller {
                 'email_address' => $company_email,
                 'company_name' => $company_name,
         );        
+
+        
+
+        // if()
+
+        // {
+        //     $this->session->set_userdata($page_data);
+
+        //     $this->load->view('company/company-header',$page_data);
+        //     $this->load->view('company/register-style.php');
+        //     $this->load->view('company/before-job-post');
+        //     $this->load->view('company/company-footer');
+        // }
+        // // 
+
 
         $this->session->set_userdata($page_data);
 

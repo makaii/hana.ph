@@ -7,11 +7,11 @@
 				{
 					echo '<div class="col-md-3">';
 						echo '<div class="well">';
-							echo '<h6 class="title-title title-left">'.$row['job_title'].'</h6>';
+							echo '<a href="'.site_url('company/view_job/'.$row['job_slug']).'"><h6 class="title-title title-left" >'.$row['job_title'].'</h6></a>';
 							echo '<ul class="list-unstyled text-left">';
 								echo '<li>'.$row['job_location'].'</li>';
-								echo '<li><strong class="text-primary">'.$row['job_salary'].'</strong></li>';
-								echo '<li>'.$row['job_description'].'</li>';
+								echo '<li><strong class="text-primary">Php '.number_format($row['job_salary'], 2).'</strong></li>';
+								echo '<li>'.substr($row['job_description'],0,100).'</li>';
 							echo '</ul>';
 						echo '</div>';
 					echo '</div>';
