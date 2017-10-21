@@ -56,7 +56,7 @@
                     <div class="col-lg-10">
                       
                          
-                          <a  class="btn btn-info btn-block" href="<?php echo base_url('company/job_posts');?>">Back</a>
+                          <a  class="btn btn-info btn-block" href="javascript:window.history.go(-1);">Back</a>
                       
                      
                     </div>

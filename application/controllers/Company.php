@@ -33,56 +33,7 @@ class Company extends CI_Controller {
        
     }
 
-    public function create_profile()
-    {
-
-        if ($this->session->userdata('profile_status') == false)
-        {
-            $page_data = array(
-                'page_title' => 'Create Profile',
-                'email_address' => $this->session->userdata('email_address') );
-             
-            $profile_date = array(
-                'company_name' => $this->session->userdata('company_name'),
-                'company_size' => $this->session->userdata('company_size'),
-                'contact_person' => $this->session->userdata('company_contact_person'),
-                'company_email' => $this->session->userdata('email_address'),
-                'company_address' => $this->session->userdata('company_address'),
-                'company_description' => $this->session->userdata('company_description')
-            );
-            $this->session->set_userdata($profile_date);
-
-            $this->load->view('company/company-header',$page_data);
-            $this->load->view('company/create-profile1');
-            $this->load->view('company/company-footer');
-        }
-
-        elseif ($this->session->userdata('profile_status') == true)
-        {
-            $page_data = array(
-                'page_title' => 'Profile',
-                'email_address' => $this->session->userdata('email_address'),
-            );
-
-            $this->load->model('model_Company');
-            
-            $row = $this->model_Company->get_company_profile_data($this->session->userdata('email_address'));
-
-            $profile_data = array(
-                'company_address' => $row->company_address,
-                'company_email' => $row->company_email,
-                'company_name' => $row->company_name,
-                'company_contact_person' => $row->company_contact_person,
-                'company_size' => $row->company_size,
-                'company_description' => $row->company_description,
-            );
-
-            $this->session->set_userdata($page_data);
-            $this->load->view('company/company-header', $page_data);
-            $this->load->view('company/view-company-profile', $profile_data);
-            $this->load->view('company/company-footer');
-        }
-    }
+   
 
     
      public function view_company_profile()
@@ -204,6 +155,7 @@ class Company extends CI_Controller {
 
     public function validate_create_job()
     {
+
         $this->form_validation->set_rules('jobtitle', 'Job Title', 'required|max_length[25]');
         $this->form_validation->set_rules('joblocation', 'Job Location', 'required');
         $this->form_validation->set_rules('jobtype', 'Job Type', 'required');
@@ -254,6 +206,8 @@ class Company extends CI_Controller {
             $this->model_Company->create_job_post($job_data);
    
             $this->load->view('company/company-header',$job_profile_data);
+            
+
             $this->load->view('company/register-style.php');
             $this->load->view('company/success-post');
             $this->load->view('company/company-footer');                

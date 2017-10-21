@@ -36,6 +36,7 @@
               </tr>
               <tr>
                   <td><small><b>Last Updated:</b></small></td>
+                  <td><small class="text-info"><?php echo $jobs_tbl['job_date_posted']?></small></td>
               </tr>
               <tr>
                   <td><small><b>Other Options:</b></small></td>
