@@ -67,24 +67,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			{
 				$this->db->insert('jobs_tbl', $job_profile_data);
 			}
-
 		}
 
 
 		public function update_job_post($updated_data)
-		{
-			
+		{		
 			if(!empty($updated_data))
 			{
 				$this->db->where('job_id', $this->input->post('id'));
 				$this->db->update('jobs_tbl', $updated_data);
 			}
-
 		}
 		public function delete_job_post($id)
-		{
-			
-
+		{	
 			if(!empty($id))
 			{
 				$this->db->set('job_status', 0);

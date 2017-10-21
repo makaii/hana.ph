@@ -30,17 +30,13 @@
                   <td><small><b>Number of Applicants: </b></small></td>
                   <td ><small class="text-info"><b > A clickable number to view applicants:</b></small></td>
               </tr>
-              <tr>
-                  <td><small><b>Number of Search:</b></small></td>
-                  <td ><small class="text-info"><b > A clickable number to view search:</b></small></td>
-              </tr>
+             
               <tr>
                   <td><small><b>Last Updated:</b></small></td>
-                  <td><small class="text-info"><?php echo $jobs_tbl['job_date_posted']?></small></td>
+                  <td><small class="text-info"><?php $date = date_create($jobs_tbl['job_date_posted']); echo date_format($date, 'F j, Y, l, g:i a')  ?></small></td>
+                 
               </tr>
-              <tr>
-                  <td><small><b>Other Options:</b></small></td>
-              </tr>
+             
             </table>
 
           </div>

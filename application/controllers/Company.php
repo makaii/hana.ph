@@ -32,9 +32,6 @@ class Company extends CI_Controller {
     	}
        
     }
-
-   
-
     
      public function view_company_profile()
      {
@@ -356,9 +353,6 @@ class Company extends CI_Controller {
                 'job_id' => $id
         );
 
-        //  $this->load->model('model_Company');
-        // $data['posts'] = $this->model_Company->get_posts(); 
-
         $this->load->model('model_Company');
         $this->model_Company->delete_job_post($id);
 
@@ -366,8 +360,9 @@ class Company extends CI_Controller {
 
         $this->load->view('company/company-header',$page_data);
         $this->load->view('company/register-style.php');
-        $this->load->view('company/');
+        $this->load->view('company/success-delete');
         $this->load->view('company/company-footer');
+        
     }
 
 }

@@ -9,8 +9,10 @@
           <a class="btn btn-block btn-info" href="<?php echo base_url();?>company/job_posts">No</a>
         </div>
         <div class="col-md-6">
-          <a class="btn btn-block btn-danger" href="<?php echo base_url();?>company/success_delete_job>">
-        Yes</a>
+          <!-- <a class="btn btn-block btn-danger" href="<?php echo site_url();?>company/success_delete_job<?php echo $job_id;?>"> <?php echo $job_id;?>
+        Yes</a> -->
+        <?php echo form_open('/company/success_delete_job'.$job_id)?>
+        <input type="submit" value="Yes" class="btn btn-danger btn-block">
         </div>
       </div>
     </div>
