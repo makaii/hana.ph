@@ -43,8 +43,14 @@ class model_Search extends CI_Model
 			else
 				 return false;
 		}
-		else
-			return "No input";
+		elseif (empty($input))
+		{
+			$query = $this->db->select()->get('jobs_tbl');
+			if ($query->num_rows() != 1)
+			{
+				return $query->result_array();
+			}			
+		}
 	}
 }
 

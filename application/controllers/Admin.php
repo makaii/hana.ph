@@ -7,6 +7,7 @@ class Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('model_Admin');
+		$this->load->model('model_Activity');
 	}
 
 	public function index()
@@ -20,7 +21,8 @@ class Admin extends CI_Controller {
 				'total_num_applicanats'	=>	$this->model_Admin->get_total_applicants(),
 				'total_num_companies'	=>	$this->model_Admin->get_total_companies(),
 				'total_num_jobs'		=>	$this->model_Admin->get_total_jobs(),
-				'newest_users'			=> 	$this->model_Admin->get_newest_users(),				
+				'newest_users'			=> 	$this->model_Admin->get_newest_users(),
+				'newest_activities'		=>	$this->model_Activity->get_activity(),			
 			);
 
 			$nav_data = array

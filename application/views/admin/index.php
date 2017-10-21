@@ -66,17 +66,39 @@
         <!-- /. ROW  -->
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="panel panel-info no-border">
                     <div class="panel-heading">
                         Recent Activities
                     </div>
                     <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Activity Type</th>
+                                        <th>Date</th>
+                                        <th>Subject</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($newest_activities as $row) {
+                                        echo "<tr>";
+                                        echo "<td>".$row->activity_id."</td>";
+                                        echo "<td>".$row->activity_type."</td>";
+                                        echo "<td>".$row->activity_date."</td>";
+                                        echo "<td>".$row->activity_search_word."</td>";
+                                        echo "</tr>";
+                                    } ?>
+                                </tbody>
+                            </table>
+                        </div>  
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="panel panel-primary no-border">
                     <div class="panel-heading">
                         Newest Registered  Users
@@ -93,7 +115,7 @@
                                             <i class="fa fa-lg fa-envelope" aria-hidden="true"></i> Email
                                         </th>
                                         <th>
-                                            <i class="fa fa-lg fa-user" aria-hidden="true"></i> Type
+                                            <i class="fa fa-lg fa-user" aria-hidden="true"></i> User Type
                                         </th>
                                         <th>
                                             <i class="fa fa-lg fa-calendar" aria-hidden="true"></i> Date Joined
