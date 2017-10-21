@@ -18,11 +18,29 @@ class Search extends CI_Controller {
 		(
 			'page_title'	=> "result of ".$search_string,
 			'jobs'			=> $search_result,
+			'email_address' => $this->session->userdata('email_address'),
 		);
 
-		$this->load->view('templates/header', $page_data);
-		$this->load->view('search/index');
-		$this->load->view('templates/footer');
+		$user_type = $this->session->userdata('user_type');
+		if ($user_type == 'applicant')
+		{
+			$this->load->view('user/user-header', $page_data);
+			$this->load->view('search/index');
+			$this->load->view('user/user-footer');
+		}
+		elseif ($user_type == 'employer')
+		{
+			$this->load->view('company/company-header', $page_data);
+			$this->load->view('search/index');
+			$this->load->view('company/company-footer');
+		}
+		else{
+			$this->load->view('templates/header', $page_data);
+			$this->load->view('search/index');
+			$this->load->view('templates/footer');
+		}
+
+		
 	}
 
 	
