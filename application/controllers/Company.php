@@ -96,6 +96,7 @@ class Company extends CI_Controller {
             $this->load->view('company/register-style.php');
             $this->load->view('company/job-posts',$data);
             $this->load->view('company/company-footer');
+
         }
         elseif (!$this->session->userdata('profile_status'))
         {
@@ -122,6 +123,7 @@ class Company extends CI_Controller {
             $this->load->view('company/company-header', $page_data);
             $this->load->view('company/create-profile');
             $this->load->view('company/company-footer');
+            $this->session->unset_userdata($profile_data);
         }
 
         
@@ -319,7 +321,7 @@ class Company extends CI_Controller {
         
         $this->load->view('company/company-footer');
 
-        
+        $this->session->unset_userdata($profile_data);
     }     
 
     public function delete_job($id)
