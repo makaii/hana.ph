@@ -51,7 +51,7 @@
           <ul class="dropdown-menu">
             <li><a href="<?php echo base_url('resume/resume'); ?>">Resume</a></li>
             <li><a href="<?php echo base_url('resume/edit_resume'); ?>">Edit Resume</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="<?php echo base_url('jobs/my_jobs'); ?>">My jobs</a></li>
             <li class="divider"></li>
             <li><a href="<?php echo base_url('main/logout'); ?>">Logout</a></li>
           </ul>
