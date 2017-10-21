@@ -127,41 +127,56 @@ class Company extends CI_Controller {
 
     public function job_posts()
     {
+       
+        if ($this->session->userdata('profile_status'))
+        {
+            $this->load->model('model_Company');
+            $company_email = $this->session->userdata('email_address');
+            $company_name = $this->model_Company->get_company_name($company_email);
+            $data['posts'] = $this->model_Company->get_posts(false, $company_email);
+
+            $page_data = array(
+                    'page_title' => 'Job Posts',
+                    'profile_status' => true,
+                    'email_address' => $company_email,
+                    'company_name' => $company_name,
+            );        
+
+            $this->session->set_userdata($page_data);
+
+            $this->load->view('company/company-header',$page_data);
+            $this->load->view('company/register-style.php');
+            $this->load->view('company/job-posts',$data);
+            $this->load->view('company/company-footer');
+        }
+        elseif (!$this->session->userdata('profile_status'))
+        {
+            $page_data = array(
+                'page_title'    => 'Profile',
+                'email_address' => $this->session->userdata('email_address'),
+
+            );
+
+            $this->session->set_userdata($page_data);
+
+            $profile_data = array(
+                'company_name'          => $this->session->userdata('company_name'),
+                'company_size'          => $this->session->userdata('company_size'),
+                'company_email'         => $this->session->userdata('email_address'),
+                'company_address'       => $this->session->userdata('company_address'),
+                'company_description'   => $this->session->userdata('company_description'),
+                'company_contact_person'        => $this->session->userdata('company_contact_person'),
+            );
+
+            $this->session->set_userdata($profile_data);
+            
+
+            $this->load->view('company/company-header', $page_data);
+            $this->load->view('company/create-profile');
+            $this->load->view('company/company-footer');
+        }
+
         
-
-        $this->load->model('model_Company');
-        $company_email = $this->session->userdata('email_address');
-        $company_name = $this->model_Company->get_company_name($company_email);
-        $data['posts'] = $this->model_Company->get_posts(false, $company_email);
-
-        $page_data = array(
-                'page_title' => 'Job Posts',
-                'profile_status' => true,
-                'email_address' => $company_email,
-                'company_name' => $company_name,
-        );        
-
-        
-
-        // if()
-
-        // {
-        //     $this->session->set_userdata($page_data);
-
-        //     $this->load->view('company/company-header',$page_data);
-        //     $this->load->view('company/register-style.php');
-        //     $this->load->view('company/before-job-post');
-        //     $this->load->view('company/company-footer');
-        // }
-        // // 
-
-
-        $this->session->set_userdata($page_data);
-
-        $this->load->view('company/company-header',$page_data);
-        $this->load->view('company/register-style.php');
-        $this->load->view('company/job-posts',$data);
-        $this->load->view('company/company-footer');
     }
 
      public function create_job()
