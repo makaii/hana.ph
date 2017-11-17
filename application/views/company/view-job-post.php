@@ -18,19 +18,19 @@
               <table>
                 <tr>
                   <td>Job Location: </td>
-                  <td><?php echo $jobs_tbl['job_location'];?> </td>
+                  <td><strong><?php echo $jobs_tbl['job_location'];?></strong> </td>
                 </tr>
                 <tr>
                   <td>Job Type: </td>
-                  <td><?php echo $jobs_tbl['job_type'];?> </td>
+                  <td><strong><?php echo $jobs_tbl['job_type'];?></strong> </td>
                 </tr>
                 <tr>
                   <td>Offered Salary: </td>
-                  <td><?php echo "Php ";echo number_format($jobs_tbl['job_salary'],2);?> </td>
+                  <td><strong><?php echo "Php ";echo number_format($jobs_tbl['job_salary'],2);?></strong></td>
                 </tr>
                 <tr>
                   <td>Email for applicants: </td>
-                  <td><?php echo $email_address;?> </td>
+                  <td><strong><?php echo $jobs_tbl['job_email'];?></strong> </td>
                 </tr>
 
               </table>

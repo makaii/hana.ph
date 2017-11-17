@@ -62,14 +62,14 @@
                           <div class="col-lg-10 col-xs-12">
                             <p class="help-block"> Input the Offered Amount</p>     
                          <select class="form-control" name="jobsalary" value="">
-                                    <option selected><?php echo $jobs_tbl['job_salary'];?></option>
-                                    <option value="1000">1,000</option>
-                                    <option value="10000">10,000</option>
-                                    <option value="15000">15,000</option>
-                                    <option value="2000">20,000</option>
-                                    <option value="25000">25,000</option>
-                                    <option value="30000">30,000</option>
-                                    <option value="35000">35,000</option>
+                                    <option selected><?php echo "Php "; echo number_format($jobs_tbl['job_salary'],2);?></option>
+                                    <option value="1000">Php 1,000</option>
+                                    <option value="10000">Php 10,000</option>
+                                    <option value="15000">Php 15,000</option>
+                                    <option value="2000">Php 20,000</option>
+                                    <option value="25000">Php 25,000</option>
+                                    <option value="30000">Php 30,000</option>
+                                    <option value="35000">Php 35,000</option>
                                    </select>
                       
                           

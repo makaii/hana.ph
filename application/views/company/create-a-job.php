@@ -63,15 +63,15 @@
                           <div class="col-lg-1"></div>
                           <div class="col-lg-10 col-xs-12">
                             <p class="help-block"> Input the Offered Amount</p>     
-                         <select class="form-control" name="jobsalary" value="<?php echo $job_salary;?>">
+                         <select class="form-control" name="jobsalary" value="<?php echo "Php "; echo number_format($job_salary,2);?>">
                                     <option selected disabled>Salary</option>
-                                    <option value="1000">1,000</option>
-                                    <option value="10000">10,000</option>
-                                    <option value="15000">15,000</option>
-                                    <option value="2000">20,000</option>
-                                    <option value="25000">25,000</option>
-                                    <option value="30000">30,000</option>
-                                    <option value="35000">35,000</option>
+                                    <option value="1000">Php 1,000.00</option>
+                                    <option value="10000">Php 10,000.00</option>
+                                    <option value="15000">Php 15,000.00</option>
+                                    <option value="2000">Php 20,000.00</option>
+                                    <option value="25000">Php 25,000.00</option>
+                                    <option value="30000">Php 30,000.00</option>
+                                    <option value="35000">Php 35,000.00</option>
                                    </select>
                           <?php echo form_error('jobsalary', '<small class="text-danger"> ', '</small>'); ?>
                           </div>
